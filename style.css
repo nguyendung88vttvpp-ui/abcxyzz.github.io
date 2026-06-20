@@ -1,0 +1,169 @@
+/* Khởi tạo cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #0d0d11; /* Màu đen sâu tinh tế */
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Hiệu ứng hạt động phía nền */
+.background-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.circle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    bottom: -100px;
+    animation: floatUp 12s infinite linear;
+}
+
+/* Các hạt kích thước và vị trí ngẫu nhiên */
+.circle:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-duration: 10s; }
+.circle:nth-child(2) { width: 120px; height: 120px; left: 25%; animation-duration: 15s; animation-delay: 2s; }
+.circle:nth-child(3) { width: 60px; height: 60px; left: 70%; animation-duration: 8s; animation-delay: 4s; }
+.circle:nth-child(4) { width: 90px; height: 90px; left: 85%; animation-duration: 13s; }
+.circle:nth-child(5) { width: 150px; height: 150px; left: 50%; animation-duration: 18s; animation-delay: 1s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Khung nội dung chính */
+.container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Avatar viền phát sáng */
+.avatar-wrapper {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 1.5rem;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: transform 0.5s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05) rotate(5deg);
+}
+
+/* Tên Username */
+.username {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 6px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+/* Chữ gõ động */
+.typing-text {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.5px;
+}
+
+#dynamic-text {
+    color: #00ffcc; /* Màu chữ động cá tính (có thể đổi thành màu bạn thích) */
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+}
+
+.cursor {
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Khu vực nút bấm */
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Nút dự án kiểu mới */
+.project-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 18px 24px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+/* Hiệu ứng khi rê chuột vào nút */
+.project-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 255, 255, 0.06);
+}
+
+.project-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Icon mũi tên */
+.arrow-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.project-btn:hover .arrow-icon {
+    opacity: 1;
+    transform: translateX(4px);
+}
